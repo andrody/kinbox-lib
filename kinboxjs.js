@@ -13,7 +13,8 @@ function kinbox() {
     }
 
     function dispatchMessage(event) {
-        window.parent.postMessage(event, "https://www.kinbox.com.br")
+        // window.parent.postMessage(event, "https://www.kinbox.com.br")
+        window.parent.postMessage(event, "*")
     }
 
     function dialog(type, data, cb) {
