@@ -26,6 +26,10 @@ function kinbox() {
         dispatchMessage({ event: "toast", data: { message, type } })
     }
 
+    function loading(isLoading) {
+        dispatchMessage({ event: "loading", data: isLoading })
+    }
+
     function setProperty(property) {
         dispatchMessage({ event: "set-property", data: property })
     }
@@ -43,6 +47,7 @@ function kinbox() {
         toast,
         dispatchEvent,
         setProperty,
+        loading,
         callConfirmCallback
     }
 }
