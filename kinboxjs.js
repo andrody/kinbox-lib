@@ -26,6 +26,10 @@ function kinbox() {
         dispatchMessage({ event: "toast", data: { message, type } })
     }
 
+    function setProperty(property) {
+        dispatchMessage({ event: "set-property", data: property })
+    }
+
     function callConfirmCallback({ confirmed }) {
         if (typeof savedCb === "function") {
             savedCb(confirmed)
@@ -38,6 +42,7 @@ function kinbox() {
         dialog,
         toast,
         dispatchEvent,
+        setProperty,
         callConfirmCallback
     }
 }
