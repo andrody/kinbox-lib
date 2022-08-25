@@ -63,11 +63,10 @@ function handleMessage(event) {
     switch (payload.event) {
         case "conversation":
         case "no_conversation":
+        case "callback":
             window.Kinbox.dispatchEvent(payload.event, payload.data)
             break
         case "dialog_confirm":
             window.Kinbox.callConfirmCallback(payload.data)
-        case "callback":
-            dispatchMessage({ event: payload.data.event, data: payload.data.data})
     }
 }
