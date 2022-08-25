@@ -57,6 +57,8 @@ window.Kinbox = new kinbox()
 window.addEventListener("message", handleMessage, false)
 function handleMessage(event) {
     const payload = event.data
+    
+    console.log(333, event, event.data)
     // if (event.origin != "h ttp://child.com") {
     //     return
     // }
