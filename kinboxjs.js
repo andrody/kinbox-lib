@@ -67,5 +67,7 @@ function handleMessage(event) {
             break
         case "dialog_confirm":
             window.Kinbox.callConfirmCallback(payload.data)
+        case "callback":
+            dispatchMessage({ event: payload.data.event, data: payload.data.data})
     }
 }
