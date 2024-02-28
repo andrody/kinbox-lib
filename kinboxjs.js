@@ -50,10 +50,6 @@ function kinbox() {
         dispatchMessage({ event: "move", data: groupId })
     }
 
-    function moveToGroup(groupId) {
-        dispatchMessage({ event: "move", data: groupId })
-    }
-
     function sendForm(form, cb) {
         savedCb = cb
         dispatchMessage({ event: "form", data: form })
