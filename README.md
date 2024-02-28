@@ -31,7 +31,7 @@ Assista o vídeo tutorial abaixo para uma explicação passo-a-passo:
 
 [![Youtube Tutorial](https://img.youtube.com/vi/iEn0_4kE3rI/0.jpg)](https://youtu.be/iEn0_4kE3rI?si=4L_7z6XRb-YGWG0g)
 
-## 📦 Instalação
+## 📦 Instalação da lib no plugin
 
 Coloque o script abaixo no head do seu html
 
@@ -39,7 +39,19 @@ Coloque o script abaixo no head do seu html
 <script src="https://andrody.github.io/kinbox-lib/kinboxjs.js"></script>
 ```
 
+## 📦 Instalação do plugin no Kinbox
+
+No Kinbox vá em Configurações > Integrações > Plugin e cole o endereço do seu html no campo "Endpoint".
+
+Caso você queira usar o nosso plugin de demonstração (https://github.com/andrody/kinbox-plugin-example), copie o seguinte endpoint do github pages:
+
+```
+https://andrody.github.io/kinbox-plugin-example/
+```
+
+
 ## 🔍 Eventos
+Com essa lib você pode escutar eventos, como por exemplo para saber quando o agente estiver visualizando uma conversa específica (Assim você pode mostrar informações relevantes para essa conversa) ou você pode executar ações no Kinbox. Abaixo vamos ver os eventos possíveis de serem escutados e logo depois as ações.
 
 ### Conversa
 
