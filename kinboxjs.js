@@ -6,7 +6,7 @@ function kinbox() {
     }
 
     function dispatchEvent(event, data) {
-        const listener = listeners.find(x => x.name === event)
+        const listener = listeners.find((x) => x.name === event)
         if (listener && typeof listener.handler === "function") {
             listener.handler(data)
         }
@@ -34,9 +34,39 @@ function kinbox() {
         dispatchMessage({ event: "set-property", data: property })
     }
 
-    function callConfirmCallback({ confirmed }) {
+    function addTag(tagId) {
+        dispatchMessage({ event: "add-tag", data: tagId })
+    }
+
+    function removeTag(tagId) {
+        dispatchMessage({ event: "remove-tag", data: tagId })
+    }
+
+    function assignTo(operatorId) {
+        dispatchMessage({ event: "assign", data: operatorId })
+    }
+
+    function moveToGroup(groupId) {
+        dispatchMessage({ event: "move", data: groupId })
+    }
+
+    function moveToGroup(groupId) {
+        dispatchMessage({ event: "move", data: groupId })
+    }
+
+    function sendForm(form, cb) {
+        savedCb = cb
+        dispatchMessage({ event: "form", data: form })
+    }
+
+    function getWorkspaceInfo(cb) {
+        savedCb = cb
+        dispatchMessage({ event: "get-workspace-info" })
+    }
+
+    function onCallback(data) {
         if (typeof savedCb === "function") {
-            savedCb(confirmed)
+            savedCb(data)
             savedCb = null
         }
     }
@@ -48,7 +78,13 @@ function kinbox() {
         dispatchEvent,
         setProperty,
         loading,
-        callConfirmCallback
+        addTag,
+        removeTag,
+        assignTo,
+        moveToGroup,
+        onCallback,
+        sendForm,
+        getWorkspaceInfo,
     }
 }
 
@@ -57,7 +93,7 @@ window.Kinbox = new kinbox()
 window.addEventListener("message", handleMessage, false)
 function handleMessage(event) {
     const payload = event.data
-    
+
     // if (event.origin != "h ttp://child.com") {
     //     return
     // }
@@ -68,6 +104,9 @@ function handleMessage(event) {
             window.Kinbox.dispatchEvent(payload.event, payload.data)
             break
         case "dialog_confirm":
-            window.Kinbox.callConfirmCallback(payload.data)
+            window.Kinbox.onCallback(payload.data.confirmed)
+        case "form_callback":
+        case "get_workspace_info_callback":
+            window.Kinbox.onCallback(payload.data)
     }
 }
